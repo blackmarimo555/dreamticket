@@ -1,0 +1,110 @@
+body{
+    position: relative;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+#btn{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: inline;
+}
+.shopMenu:first-child{
+    background: rgb(252, 249, 82);
+    font-weight: bold;
+    cursor: default;
+}
+.shopMenu{
+    height: 50px;
+    width: 370px;
+    border: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    user-select: none;
+    margin: 2px;
+    border-radius: 2px;
+    box-shadow: 1px 1px #999;
+}
+#haitouhyou{
+    border: solid black 1px;
+    margin-top: 10px;
+    border-collapse:  collapse;
+}
+#haitouhyou > th,td{
+    border: solid black 1px;
+}
+#save,#saveDelete{
+    border: 1px solid black;
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+}
+#save{
+    background: rgb(68, 245, 91);
+}
+#saveDelete{
+    background: rgb(255, 0, 0);
+}
+
+.saveDelete{
+    position: absolute;
+    top: 50vh;
+    left:50vh;
+    background: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 4px;
+    opacity: 100%;
+}
+.saveDelete > div{
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.saveDelete > div > div{
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 2px 2px #aaa;
+    background: rgb(36, 106, 238);
+    cursor: pointer;
+}
+.saveDelete > div > div:first-child{
+    background: rgb(255, 0, 0);
+}
+.whiteScreen{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 75%;
+    background: white;
+}
+#conteinar{
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+#gameScreen{
+    margin: 5px;
+    /* border: 1px solid black; */
+}
+
+#shopScreen{
+    margin: 10px;
+}
+.tap{
+    /* display: inline-block; */
+    /* margin: 0 auto; */
+    font-size: 15px;
+}

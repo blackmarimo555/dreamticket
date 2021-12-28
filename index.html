@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宝くじシュミレーター</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div id="conteinar">
+        <div id="gameScreen">
+            <img src="./img/takarakuji.png" id="btn" alt="kuzi">
+            <p class="tap">&uarr;TAP&uarr;</p>
+            <p id="pointview">0point</p>
+            <p id="log">
+                ログ
+            </p>
+            <div id="total">
+                一等:0<br>
+                前後賞:0<br>
+                組違い賞:0<br>
+                二等:0<br>
+                三等:0<br>
+                四等:0<br>
+                五等:0<br>
+                六等:0<br>
+                七等:0<br>
+                ハズレ:0<br>
+                引いた回数:0
+            </div>
+        </div>
+
+        <div id="shopScreen">
+            <div id ="shop">
+                <div class="shopMenu">ITEM SHOP</div>
+                <div id="outClickerShop" class="shopMenu">所持数:0 自動購入装置+1 cost:300point</div>
+                <div id="missValuePlus" class="shopMenu">所持数:0 ハズレでもpoint獲得+10 cost:100point</div>
+                <div id="clickUp" class="shopMenu">所持数:0 クリックで獲得するクジ+1 cost:300</div>
+                <div id="bonusUp" class="shopMenu">ボーナス%:0% 当たりの配当5%アップ cost:1,000</div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div id="save">save</div>
+    <div id="saveDelete">save削除</div>
+
+    <div id="real">仮想投資額:0 仮想獲得賞金:0 仮想収支:0</div>
+    <table id="haitouhyou">
+        <tr>
+            <td>一等</td><td>1/2000万</td><td>7億point</td>
+        </tr>
+        <tr>
+            <td>前後賞</td><td>1/1000万</td><td>1.5億point</td>
+        </tr>
+        <tr>
+            <td>組違い賞</td><td>1/10万</td><td>30万point</td>
+        </tr>
+        <tr>
+            <td>二等</td><td>1/500万</td><td>1000万point</td>
+        </tr>
+        <tr>
+            <td>三等</td><td>1/50万</td><td>100万point</td>
+        </tr>
+        <tr>
+            <td>四等</td><td>1/1万</td><td>50000point</td>
+        </tr>
+        <tr>
+            <td>五等</td><td>1/333</td><td>10000point</td>
+        </tr>
+        <tr>
+            <td>六等</td><td>1/100</td><td>3000point</td>
+        </tr>
+        <tr>
+            <td>七等</td><td>1/10</td><td>300point</td>
+        </tr>
+    </table>
+    <script src="./js/main.js"></script>
+</body>
+</html>
