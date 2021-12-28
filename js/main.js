@@ -235,12 +235,12 @@
             totals.t2++;
             point+=Math.floor(10000000 * (1 + bonusUpBuyed * 5 / 100));
         } 
-        else if(222 < chicketNumber && chicketNumber <= 422){
+        else if(222 < chicketNumber && chicketNumber <= 262){
             log.innerText = "三等";
             totals.t3++;
             point+=Math.floor(1000000 * (1 + bonusUpBuyed * 5 / 100));
         } 
-        else if(422 < chicketNumber && chicketNumber <= 462){
+        else if(422 < chicketNumber && chicketNumber <= 2422){
             log.innerText = "四等";
             totals.t4++;
             point+=Math.floor(50000 * (1 + bonusUpBuyed * 5 / 100));
