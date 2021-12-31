@@ -6,13 +6,23 @@
     const pointview = document.getElementById('pointview');
     const shop = document.getElementById('shop');
     const outClickerShop = document.getElementById('outClickerShop');
+    const outClickerShopInfo = document.getElementById('outClickerShopInfo');
     const missValuePlus = document.getElementById('missValuePlus');
+    const missValuePlusInfo = document.getElementById('missValuePlusInfo')
     const clickUp = document.getElementById('clickUp');
+    const clickUpInfo = document.getElementById('clickUpInfo');
     const real = document.getElementById('real');
     const bonusUp = document.getElementById('bonusUp');
+    const bonusUpInfo = document.getElementById('bonusUpInfo');
     const save = document.getElementById('save');
     const saveDelete = document.getElementById('saveDelete');
+    const achievementScreen = document.getElementById('achievementScreen');
+    const achievement = document.getElementById('achievement');
+    const achievementScreenClose = document.getElementById('achievementScreenClose');
+    const achievementList = document.querySelectorAll(".achievementList");
+    const playTime = document.getElementById('playTime');
 
+    let achivementsCleared = [0,0,0,0,0,0,0,0,0,0,0,0];
     let totals = {t1:0,
                     t1zg:0,
                     t1kt:0,
@@ -35,6 +45,8 @@
     let clickPerClickValue = 300;
     let bonusUpValue = 1000;
     let bonusUpBuyed = 0;
+    let time = 0;
+
 
     const pointSave = () =>{
         localStorage.setItem('point',point);
@@ -48,6 +60,8 @@
         localStorage.setItem('bonusUpValue',bonusUpValue);
         localStorage.setItem('bonusUpBuyed',bonusUpBuyed);
         localStorage.setItem('totals', JSON.stringify(totals));
+        localStorage.setItem('time',time);
+        localStorage.setItem('achivementsCleared',JSON.stringify(achivementsCleared));
     }
 
     save.addEventListener('click',()=>{
@@ -78,7 +92,8 @@
 
         saveDeleteCheckOK.addEventListener('click',()=>{
             localStorage.clear();
-            totals = {t1:0,
+            totals = {
+                t1:0,
                 t1zg:0,
                 t1kt:0,
                 t2:0,
@@ -111,10 +126,10 @@
     const reloadScreen = ()=>{
         const viewPoint = point.toLocaleString();
         pointview.innerText = `${viewPoint}point`;
-        outClickerShop.innerText=`所持数:${outNumber} 自動購入装置+1 cost:${outClickerValue.toLocaleString()}point`;
-        missValuePlus.innerText = `所持数:${missValue/10} ハズレでもpoint獲得+10 cost:${missShopValue.toLocaleString()}point`;
-        clickUp.innerText = `所持数:${clickPerClick} クリックで獲得するクジ+1 cost:${clickPerClickValue.toLocaleString()}`;
-        bonusUp.innerText = `ボーナス%:${5*bonusUpBuyed}% 当たりの配当5%アップ cost:${bonusUpValue.toLocaleString()}`;
+        outClickerShopInfo.innerText=`所持数:${outNumber} cost:${outClickerValue.toLocaleString()}point`;
+        missValuePlusInfo.innerText = `所持数:${missValue/10} cost:${missShopValue.toLocaleString()}point`;
+        clickUpInfo.innerText = `所持数:${clickPerClick} cost:${clickPerClickValue.toLocaleString()}`;
+        bonusUpInfo.innerText = `ボーナス%:${5*bonusUpBuyed}% cost:${bonusUpValue.toLocaleString()}`;
         document.getElementById('total').innerText = 
         `一等:${totals.t1}
         前後賞:${totals.t1zg}
@@ -132,7 +147,6 @@
 
     const loadPoint = () =>{
         if(localStorage.getItem('point')){
-            console.log('saveデータあり');
             point = Number(localStorage.getItem('point'));
             total = Number(localStorage.getItem('total'));
             outNumber = Number(localStorage.getItem('outNumber'));
@@ -144,6 +158,8 @@
             bonusUpValue = Number(localStorage.getItem('bonusUpValue'));
             bonusUpBuyed = Number(localStorage.getItem('bonusUpBuyed'));
             totals = JSON.parse(localStorage.getItem('totals'));
+            time = Number(localStorage.getItem('time'));
+            achivementsCleared = JSON.parse(localStorage.getItem('achivementsCleared'));
             
             reloadScreen();
 
@@ -166,13 +182,24 @@
         setTimeout(outClick,1000);
     };
 
+    achievement.addEventListener('click',()=>{
+        achievementScreen.classList.toggle('invisible');
+        const whiteScreen = document.createElement('div');
+        whiteScreen.classList.add('whiteScreen');
+        document.body.appendChild(whiteScreen);
+        achievementScreenClose.addEventListener('click',()=>{
+            achievementScreen.classList.add('invisible');
+            whiteScreen.remove();
+        });
+    });
+
     outClickerShop.addEventListener('click',()=>{
         if(outClickerValue <= point){
             point = point - outClickerValue;
             outNumber++;
             outClickerValue = outClickerValue * 1.2;
             outClickerValue = Math.floor(outClickerValue);
-            outClickerShop.innerText=`所持数:${outNumber} 自動購入装置+1 cost:${outClickerValue.toLocaleString()}point`;
+            outClickerShopInfo.innerText=`所持数:${outNumber} cost:${outClickerValue.toLocaleString()}point`;
             const viewPoint = point.toLocaleString();
             pointview.innerText = `${viewPoint}point`;
         }
@@ -183,7 +210,7 @@
             point = point - missShopValue;
             missValue+=10;
             missShopValue = Math.floor(missShopValue * 1.2);
-            missValuePlus.innerText = `所持数:${missValue/10} ハズレでもpoint獲得+10 cost:${missShopValue.toLocaleString()}point`;
+            missValuePlusInfo.innerText = `所持数:${missValue/10} cost:${missShopValue.toLocaleString()}point`;
             const viewPoint = point.toLocaleString();
             pointview.innerText = `${viewPoint}point`;
         }
@@ -194,7 +221,7 @@
             point = point - clickPerClickValue;
             clickPerClick++;
             clickPerClickValue = Math.floor(clickPerClickValue * 1.2);
-            clickUp.innerText = `所持数:${clickPerClick} クリックで獲得するクジ+1 cost:${clickPerClickValue.toLocaleString()}`;
+            clickUpInfo.innerText = `所持数:${clickPerClick} cost:${clickPerClickValue.toLocaleString()}`;
             const viewPoint = point.toLocaleString();
             pointview.innerText = `${viewPoint}point`;
         }
@@ -205,7 +232,7 @@
             point = point - bonusUpValue;
             bonusUpBuyed++;
             bonusUpValue = Math.floor(bonusUpValue*1.2);
-            bonusUp.innerText = `ボーナス%:${5*bonusUpBuyed}% 当たりの配当5%アップ cost:${bonusUpValue.toLocaleString()}`;
+            bonusUpInfo.innerText = `ボーナス%:${5*bonusUpBuyed}% cost:${bonusUpValue.toLocaleString()}`;
             const viewPoint = point.toLocaleString();
             pointview.innerText = `${viewPoint}point`;
         }
@@ -293,7 +320,99 @@
         real.innerText = `仮想投資額:${lose.toLocaleString()} 仮想獲得賞金:${win.toLocaleString()} 仮想収支:${(win - lose).toLocaleString()}`;
     };
 
+    const timeClock = () =>{
+        time++;
+        let hour = Math.floor(time / 3600);
+        let min = Math.floor(time % 3600 / 60);
+        let lem = time % 60;
+        playTime.innerText = `プレイ時間:${hour}時間${min}分${lem}秒`;
+        setTimeout(timeClock,1000);
+    };
+
+    const achivementPop = word =>{
+        const pop = document.createElement('div');
+        const popMesseage = document.createElement('div');
+        popMesseage.innerText = word;
+        pop.classList.add('pop');
+        popMesseage.classList.add('popMesseage');
+        pop.appendChild(popMesseage);
+        const popDelete = document.createElement('div');
+        popDelete.innerHTML="&times;"
+        popDelete.classList.add('popDelete');
+        pop.appendChild(popDelete);
+        document.getElementById('gameScreen').appendChild(pop);
+        popDelete.addEventListener('click',()=>{
+            pop.remove();
+        });
+    }
+
+    const achivementsReload = () =>{
+        for(let i = 0; i < achivementsCleared.length; i++){
+            if(achivementsCleared[i] === 1){
+                achievementList[i].classList.remove('achievementNoClear');
+                achievementList[i].classList.add('achievementCleared');
+            }
+        }
+    }
+
+    const achievementClearedCheck = () =>{
+        if(achivementsCleared[0] === 0 && 100000 <= totals.t7){
+            achivementsCleared[0] = 1;
+            achivementPop("7等10万回達成!");
+        }
+        if(achivementsCleared[1] === 0 && 50000 <= totals.t6){
+            achivementsCleared[1] = 1;
+            achivementPop("6等5万回達成!")
+        }
+        if(achivementsCleared[2] === 0 && 1000 <= totals.t5){
+            achivementsCleared[2] = 1;
+            achivementPop("5等千回達成!");
+        }
+        if(achivementsCleared[3] === 0 && 30 <= totals.t4){
+            achivementsCleared[3] = 1;
+            achivementPop("4等30回達成!");
+        }
+        if(achivementsCleared[4] === 0 && 5 <= totals.t3){
+            achivementsCleared[4] = 1;
+            achivementPop("3等5回達成!");
+        }
+        if(achivementsCleared[5] === 0 && 1 <= totals.t2){
+            achivementsCleared[5] = 1;
+            achivementPop("2等1回達成!");
+        }
+        if(achivementsCleared[6] === 0 && 30 <= totals.t1kt){
+            achivementsCleared[6] = 1;
+            achivementPop("組違い賞30回達成!");
+        }
+        if(achivementsCleared[7] === 0 && 1 <= totals.t1zg){
+            achivementsCleared[7] = 1;
+            achivementPop("前後賞1回達成!");
+        }
+        if(achivementsCleared[8] === 0 && 1 <= totals.t1){
+            achivementsCleared[8] = 1;
+            achivementPop("1等当選!");
+        }
+        if(achivementsCleared[9] === 0 && 1000000 <= total){
+            achivementsCleared[9] = 1;
+            achivementPop("百万回クジ達成!");
+        }
+        if(achivementsCleared[10] === 0 && 3600 <= time){
+            achivementsCleared[10] = 1;
+            achivementPop("プレイ時間1時間達成!");
+        }
+        if(achivementsCleared[11] === 0 && 100000000 <= point){
+            achivementsCleared[11] = 1;
+            achivementPop("所持ポイント1億達成!");
+        }
+
+        achivementsReload();
+        setTimeout(achievementClearedCheck,1000);
+    };
+
+    timeClock();
     outClick();
     loadPoint();
     outSave();
+    achivementsReload();
+    achievementClearedCheck();
 }

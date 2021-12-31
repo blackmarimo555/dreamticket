@@ -1,24 +1,64 @@
 body{
-    position: relative;
+    /* position: relative; */
     font-size: 13px;
     margin: 0;
     padding: 0;
+    background-image: url('../img/cork-board.png');
+    
 }
 #btn{
-    width: 200px;
-    height: 200px;
+    width: 235px;
+    height: 235px;
     cursor: pointer;
     margin: 0 auto;
     display: inline;
 }
 .shopMenu:first-child{
     background: rgb(252, 249, 82);
-    font-weight: bold;
+    /* font-weight: bold; */
     cursor: default;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    line-height: 50px;
+}
+.secretShop:first-child{
+    background: rgb(255, 86, 247);
+    /* font-weight: bold; */
+    cursor: default;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    line-height: 50px;
+}
+.secretShop{
+    border: 1px solid black;
+    width: 330px;
+    height: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 1px 1px #999;
+    background: #fff;
+    user-select: none;
+    margin: 2px;
+    text-align: center;
 }
 .shopMenu{
+    border: 1px solid black;
+    width: 330px;
     height: 50px;
-    width: 370px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 1px 1px #999;
+    background: #fff;
+    user-select: none;
+    margin: 2px;
+    text-align: center;
+    display: flex;
+    /* height: 50px;
+    width: 330px;
     border: 1px solid black;
     cursor: pointer;
     text-align: center;
@@ -27,6 +67,17 @@ body{
     margin: 2px;
     border-radius: 2px;
     box-shadow: 1px 1px #999;
+    background: #fff; */
+}
+.shopMenu > img{
+    margin-left: 2px;
+}
+.shopMenu > div{
+    width: 100%;
+}
+.shopMenu > div > p{
+    margin: 0px;
+    height: 25px;
 }
 #haitouhyou{
     border: solid black 1px;
@@ -41,6 +92,10 @@ body{
     display: inline-block;
     cursor: pointer;
     margin: 5px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
 }
 #save{
     background: rgb(68, 245, 91);
@@ -51,11 +106,12 @@ body{
 
 .saveDelete{
     position: absolute;
-    top: 50vh;
-    left:50vh;
+    top: 50%;
+    left:50%;
     background: #fff;
     text-align: center;
-    margin: 0 auto;
+    margin-left: -151px;
+    margin-top: 36px;
     border: 1px solid black;
     border-radius: 4px;
     opacity: 100%;
@@ -74,6 +130,9 @@ body{
     box-shadow: 2px 2px #aaa;
     background: rgb(36, 106, 238);
     cursor: pointer;
+    line-height: 30px;
+    font-weight: bold;
+    color: #fff;
 }
 .saveDelete > div > div:first-child{
     background: rgb(255, 0, 0);
@@ -91,13 +150,21 @@ body{
     border: 1px solid black;
     border-radius: 4px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 95%;
     flex-wrap: wrap;
-    margin: 5px;
+    margin: 5px auto;
+    background-image: url('../img/tic-tac-toe.png');
 }
 #gameScreen{
-    margin: 5px;
+    /* position: relative; */
+    margin: 10px;
+    width: 334px;
     /* border: 1px solid black; */
+    position: relative;
+}
+#upgradeScreen{
+    margin: 10px;
 }
 
 #shopScreen{
@@ -107,7 +174,137 @@ body{
     /* display: inline-block; */
     /* margin: 0 auto; */
     font-size: 15px;
+    text-align: center;
 }
 html {
     touch-action: manipulation;
+}
+#haitouhyou{
+    background: #fff;
+    margin: 5px;
+}
+#real,#playTime{
+    font-weight: bold;
+    margin: 5px;
+}
+#menu2{
+    margin: 0 auto;
+    width: 610px;
+}
+#header{
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    margin-top: 0;
+    border-bottom: 1px solid black;
+    border-top: 1px solid #fff;
+}
+#header > h1{
+    background: #fff;
+}
+#achievement{
+    width: 150px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgb(255, 253, 253);
+    font-size: 15px;
+    margin-top: 4px;
+    display: flex;
+}
+#achievement > img{
+    left:2px;
+}
+#achievement > p{
+    display: inline-block;
+    margin: 0 auto;
+    font-weight: bold;
+}
+#achievementScreen{
+    width: 334px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -167px;
+    margin-top: -250px;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 8px;
+    z-index: 1;
+}
+.invisible{
+    display: none;
+}
+#achievementScreenClose{
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 65px;
+    font-size: 30px;
+    font-weight: bold;
+
+}
+#achievementTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+.achievementList{
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 2px;
+    font-size: 16px;
+}
+.achievementNoClear::before{
+    content: "□";
+    font-size: 16px;
+}
+.achievementCleared{
+    background: rgb(238, 252, 43);
+}
+.achievementCleared::before{
+    content: url(../img/cleared.png);
+}
+#flexConteinar{
+    display: inline-flex;
+}
+.pop{
+    position: absolute;
+    bottom: 30px;
+    width: 334px;
+    background: #fff;
+    border: 1px solid black;
+    height: 50px;
+    display: flex;
+    line-height: 50px;
+    justify-content: space-between;
+    border-radius: 16px;
+    animation: flash 1s linear infinite;
+}
+@keyframes flash {
+    0%,100% {
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 0.5;
+    }
+  }
+.popMesseage{
+    font-size: 25px;
+}
+.popDelete{
+    font-size: 30px;
+    /* margin-right: 10px; */
+    cursor: pointer;
+}
+@media (max-width:610px) {
+    #conteinar{
+        width: 95%;
+    }
+    #menu{
+        width: 95%;
+    }
 }

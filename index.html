@@ -9,10 +9,14 @@
 </head>
 <body>
 
+    <header id="header">
+        <h1>宝くじシュミレーター</h1>
+    </header>
+
     <div id="conteinar">
         <div id="gameScreen">
+            <p class="tap">&#9759;TAP&#9759;</p>
             <img src="./img/takarakuji.png" id="btn" alt="kuzi">
-            <p class="tap">&uarr;TAP&uarr;</p>
             <p id="pointview">0point</p>
             <p id="log">
                 ログ
@@ -30,56 +34,119 @@
                 ハズレ:0<br>
                 引いた回数:0
             </div>
+
+            <div id="achievement">
+                <img src="./img/achievement.png">
+                <p>ACHIEVEMENT</p>
+            </div>
+            
         </div>
 
         <div id="shopScreen">
             <div id ="shop">
                 <div class="shopMenu">ITEM SHOP</div>
-                <div id="outClickerShop" class="shopMenu">所持数:0 自動購入装置+1 cost:300point</div>
-                <div id="missValuePlus" class="shopMenu">所持数:0 ハズレでもpoint獲得+10 cost:100point</div>
-                <div id="clickUp" class="shopMenu">所持数:0 クリックで獲得するクジ+1 cost:300</div>
-                <div id="bonusUp" class="shopMenu">ボーナス%:0% 当たりの配当5%アップ cost:1,000</div>
+                
+                <div id="outClickerShop" class="shopMenu">
+                    <img src="./img/tciket.png">
+                    <div>
+                        <p>自動購入装置+1</p>
+                        <p id="outClickerShopInfo">所持数:0 cost:300point</p>
+                    </div>
+                </div>
+
+                <div id="missValuePlus" class="shopMenu">
+                    <img src="./img/hazure.png">
+                    <div>
+                        <p>ハズレでもpoint獲得+10</p>
+                        <p id="missValuePlusInfo">所持数:0 cost:100point</p>
+                    </div>
+                </div>
+
+                <div id="clickUp" class="shopMenu">
+                    <img src="./img/clickup.png">
+                    <div>
+                        <p>クリックで獲得するクジ+1</p>
+                        <p id="clickUpInfo">所持数:0 cost:300point</p>
+                    </div>
+                </div>
+
+                <div id="bonusUp" class="shopMenu">
+                    <img src="./img/bonusup.png">
+                    <div>
+                        <p>当たりの配当5%アップ</p>
+                        <p id="bonusUpInfo">所持数:0 cost:1,000point</p>
+                    </div>
+                </div>
+
+                <!-- <div id="missValuePlus" class="shopMenu">所持数:0  cost:100point</div>
+                <div id="clickUp" class="shopMenu">所持数:0  cost:300</div>
+                <div id="bonusUp" class="shopMenu">ボーナス%:0% 当たりの配当5%アップ cost:1,000</div> -->
             </div>
+        </div>
+
+        <div id="upgradeScreen">
+            <div class="secretShop">SECRET SHOP</div>
         </div>
 
     </div>
 
 
 
+    <div id="menu2">
+        <div id="save">save</div>
+        <div id="saveDelete">save削除</div>
+    
+        <div id="real">仮想投資額:0 仮想獲得賞金:0 仮想収支:0</div>
+        <div id="playTime">0時0分0秒</div>
+        <table id="haitouhyou">
+            <tr>
+                <td>一等</td><td>1/2000万</td><td>7億point</td>
+            </tr>
+            <tr>
+                <td>前後賞</td><td>1/1000万</td><td>1.5億point</td>
+            </tr>
+            <tr>
+                <td>組違い賞</td><td>1/10万</td><td>30万point</td>
+            </tr>
+            <tr>
+                <td>二等</td><td>1/500万</td><td>1000万point</td>
+            </tr>
+            <tr>
+                <td>三等</td><td>1/50万</td><td>100万point</td>
+            </tr>
+            <tr>
+                <td>四等</td><td>1/1万</td><td>50000point</td>
+            </tr>
+            <tr>
+                <td>五等</td><td>1/333</td><td>10000point</td>
+            </tr>
+            <tr>
+                <td>六等</td><td>1/100</td><td>3000point</td>
+            </tr>
+            <tr>
+                <td>七等</td><td>1/10</td><td>300point</td>
+            </tr>
+        </table>
+    </div>
+    <div id="achievementScreen" class="invisible">
+        <div id="flexConteinar">
+            <div id="achievementTitle">ACHIEVEMENT</div>
+            <div id="achievementScreenClose">&times;</div>
+        </div>
 
-    <div id="save">save</div>
-    <div id="saveDelete">save削除</div>
-
-    <div id="real">仮想投資額:0 仮想獲得賞金:0 仮想収支:0</div>
-    <table id="haitouhyou">
-        <tr>
-            <td>一等</td><td>1/2000万</td><td>7億point</td>
-        </tr>
-        <tr>
-            <td>前後賞</td><td>1/1000万</td><td>1.5億point</td>
-        </tr>
-        <tr>
-            <td>組違い賞</td><td>1/10万</td><td>30万point</td>
-        </tr>
-        <tr>
-            <td>二等</td><td>1/500万</td><td>1000万point</td>
-        </tr>
-        <tr>
-            <td>三等</td><td>1/50万</td><td>100万point</td>
-        </tr>
-        <tr>
-            <td>四等</td><td>1/1万</td><td>50000point</td>
-        </tr>
-        <tr>
-            <td>五等</td><td>1/333</td><td>10000point</td>
-        </tr>
-        <tr>
-            <td>六等</td><td>1/100</td><td>3000point</td>
-        </tr>
-        <tr>
-            <td>七等</td><td>1/10</td><td>300point</td>
-        </tr>
-    </table>
+        <div id="7tou100" class="achievementList achievementNoClear">7等を10,000回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">6等を50,000回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">5等を1,000回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">4等を30回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">3等を5回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">2等を1回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">組違い賞を30回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">前後賞を1回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">1等を1回当選させる</div>
+        <div id="7tou100" class="achievementList achievementNoClear">1,000,000回クジを引く</div>
+        <div id="7tou100" class="achievementList achievementNoClear">起動時間1時間</div>
+        <div id="7tou100" class="achievementList achievementNoClear">所持ポイント1億</div>
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>
